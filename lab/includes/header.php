@@ -39,7 +39,7 @@
                </li>
                   <?php }else if(isset($_SESSION['admin'])){ ?>
                <li class="nav-item">
-                 <a href="admin.php" class="nav-link"><?php echo $_SESSION['admin']; ?></a>
+                 <a href="admin.php" class="nav-link"><?php echo $_SESSION['admin'];?></a>
                </li>
                <li class="nav-item">
                  <a href="adminProfile.php" class="nav-link">Profile</a>
