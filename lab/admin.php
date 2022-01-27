@@ -1,6 +1,12 @@
 <?php 
 
-session_start(); 
+session_start();
+
+include("check_login.php");
+if($_SESSION['role'] != "admin") {
+    include("403_forbidden.php");
+    return;
+};
 
 include("includes/connection.php");
 
@@ -14,13 +20,13 @@ include("includes/connection.php");
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-
+<a href="employee.php">emploooye</a>
 	<?php include("includes/header.php"); ?>
 
 	<div class="container" style="text-align:center">
-        <button class="btn btn-info my-5">
+        <button class="btn btn-info my-5" style="float:right;">
             <a href="addEmployee.php" class="text-light" >
-                Add Employee
+                Register Employee
             </a>
         </button>
 
@@ -64,7 +70,8 @@ include("includes/connection.php");
                                     <td>'.$hiring_date.'</td>
                                     <td>
                                     <p style = "line-height:1.4">
-                                        <button class="btn btn-success"><a href="updateEmployee.php?updateid='.$id.'" class="text-light">Update</a></button>
+                                        <button type="button" class="btn btn-primary"><a href="research.php?user_id='.$id.'" class="text-light">Research</a></button>
+                                        <button class="btn btn-success"><a href="updateEmployee.php?updateid='.$id.'" class="text-light">Edit</a></button>
                                         <button class="btn btn-danger"><a href="deleteEmployee.php?deleteid='.$id.'" class="text-light">Delete</a></button>
                                     </p>
                                     </td>

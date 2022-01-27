@@ -1,4 +1,12 @@
-<?php session_start(); ?>
+<?php
+    session_start();
+
+    include("check_login.php");
+    if($_SESSION['role'] != "employee") {
+        include("403_forbidden.php");
+        return;
+    };
+?>
 <!DOCTYPE html>
 <html>
 <head>

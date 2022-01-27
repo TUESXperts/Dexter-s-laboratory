@@ -1,5 +1,5 @@
 <?php 
-session_start();
+    session_start();
   include("includes/connection.php");
 
    
@@ -8,37 +8,33 @@ session_start();
   if (isset($_POST['login'])) {
   	   
   	   $uname = $_POST['uname'];
-  	   $role = $_POST['role'];
   	   $pass = $_POST['pass'];
 
   	   if (empty($uname)) {
   	   	
-  	   }else if(empty($role)){
-
   	   }else if(empty($pass)){
 
   	   }else{
 
-         $query = "SELECT * FROM users WHERE username='$uname' AND role='$role' AND password='$pass'";
+         $query = "SELECT id,username, role FROM users WHERE username='$uname' AND password='$pass' limit 1";
          $res = mysqli_query($connect,$query);
 
          if (mysqli_num_rows($res) == 1) {
+              $result = mysqli_fetch_assoc($res);
+              $role = $result['role'];
 
-         	  if ($role == "Patient") {
+              $_SESSION['user_id'] = $result['id'];
+              $_SESSION['username'] = $result['username'];
+              $_SESSION['role'] = $result['role'];
 
-         	  	$_SESSION['patient'] = $uname;
+         	  if ($role == "patient") {
          	  	header("Location: patient.php");
          	  	
-         	  }else if($role == "Employee"){
-                
-                $_SESSION['employee'] = $uname;
+         	  }else if($role == "employee"){
                 header("Location: employee.php");
 
-         	  }else if($role == "Admin"){
-                
-                $_SESSION['admin'] = $uname;
+         	  }else if($role == "admin"){
                 header("Location: admin.php");
-
             }
          	 $output .= "you have logged-In";
          }else{
@@ -63,25 +59,15 @@ session_start();
 <body>
 	<?php include("includes/header.php"); ?>
 
-
-
 	<div class="container">
 		<div class="col-md-12">
 			<div class="row d-flex justify-content-center">
 				<div class="col-md-6 shadow-sm" style="margin-top:100px;">
-					<form method="post">
+					<form method="post" style="padding: 20px;">
 						<h3 class="text-center my-3">Login</h3>
 						<div class="text-center"><?php echo $output; ?></div>
 						<label>Username</label>
 						<input type="text" name="uname" class="form-control my-2" placeholder="Enter Username" autocomplete="off">
-                         
-            <label>Select Role</label>
-						<select name="role" class="form-control my-2">
-							<option value="">Selete Role</option>
-							<option value="Patient">Patient</option>
-							<option value="Employee">Employee</option>
-              <option value="Admin">Admin</option>
-						</select>
 
 						<label>Password</label>
 						<input type="password" name="pass" class="form-control my-2" placeholder="Enter Password">
