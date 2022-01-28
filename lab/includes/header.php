@@ -19,10 +19,10 @@
          <ul class="navbar-nav">
              <?php if(isset($_SESSION['user_id'])){ ?>
                  <li class="nav-item">
-                     <a href="#" class="nav-link"><?php echo "Hello, " . $_SESSION['username']; ?></a>
+                     <a href="#" class="nav-link"><?php echo "Hello, " . $_SESSION['username'] . "!"; ?></a>
                  </li>
                  <li class="nav-item">
-                     <a href="patientProfile.php" class="nav-link">Profile</a>
+                     <a href="profile.php" class="nav-link">Profile</a>
                  </li>
                  <li class="nav-item">
                      <a href="logout.php" class="nav-link">Logout</a>

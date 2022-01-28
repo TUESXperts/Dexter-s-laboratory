@@ -53,7 +53,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Multilogin System</title>
+	<title>Dexter's Lab</title>
 
 </head>
 <body>

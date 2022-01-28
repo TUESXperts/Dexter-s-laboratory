@@ -20,7 +20,7 @@ include("includes/connection.php");
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-<a href="employee.php">emploooye</a>
+
 	<?php include("includes/header.php"); ?>
 
 	<div class="container" style="text-align:center">
@@ -38,15 +38,15 @@ include("includes/connection.php");
                 <th scope="col">Surname</th>
                 <th scope="col">Username</th>
                 <th scope="col">Gender</th>
-                <th scope="col">Role</th>
-                <th scope="col">Password</th>
+                <th scope="col">Contract type</th>
+                <th scope="col">Hiring date</th>
                 </tr>
             </thead>
             <tbody>
 
                 <?php
 
-                    $sql="SELECT id,firstname, surname, username, gender, contract_type, hiring_date FROM users WHERE role='Employee'";
+                    $sql="SELECT id,firstname, surname, username, gender, contract_type, hiring_date FROM users WHERE role='employee'";
                     $result=mysqli_query($connect, $sql);
                     if($result) {
                         $i = 1;

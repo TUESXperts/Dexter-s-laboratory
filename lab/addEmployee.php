@@ -9,16 +9,18 @@
     $username = $_POST['username'];
     $gender = $_POST['gender'];
     $role = $_POST['role'];
+    $contract_type = $_POST['contract_type'];
+    $hiring_date = $_POST['hiring_date'];
     $password = $_POST['password'];
     
-    $sql = "INSERT INTO users (firstname, surname, username, gender, role, password)
-            VALUES ('$firstname', '$surname', '$username', '$gender','$role', '$password')";
+    $sql = "INSERT INTO users (firstname, surname, username, gender, role, contract_type, hiring_date, password)
+            VALUES ('$firstname', '$surname', '$username', '$gender','$role', '$contract_type', '$hiring_date', '$password')";
     
     $result=mysqli_query($connect, $sql);
     if($result) {
         header('location:admin.php');
     } else {
-        die(mysqli_error($conn));
+        die(mysqli_error($connect));
     }
     
 }
@@ -76,8 +78,21 @@
 			            <div class="form-group">
 			                <label for="role">Role</label>
 			                <select class="form-control" id="role" name="role">
-			                <option>Employee</option>
+			                <option>employee</option>
 			                </select>
+			            </div>
+
+			            <div class="form-group">
+			                <label for="contract_type">Contract type</label>
+			                <select class="form-control" id="contact_type" name="contract_type">
+			                <option>Employment contract</option>
+			                <option>Civil contract</option>
+			                </select>
+			            </div>
+
+			            <div class="form-group">
+			            	<label for="hiring_date">Hiring date</label>
+			            	<input type="date" id="hiring_date" name="hiring_date" class="form-control my-2" value="2022-01-01" min="2018-01-01" max="2222-12-31">
 			            </div>
 
 			            <label>Password</label>

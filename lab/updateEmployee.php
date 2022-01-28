@@ -15,6 +15,8 @@ $surname = $row['surname'];
 $username = $row['username'];
 $gender = $row['gender'];
 $role = $row['role'];
+$contract_type = $row['contract_type'];
+$hiring_date = $row['hiring_date'];
 $password = $row['password'];
 
 if(isset($_POST['update'])){
@@ -23,9 +25,11 @@ if(isset($_POST['update'])){
     $username = $_POST['username'];
     $gender = $_POST['gender'];
     $role = $_POST['role'];
+    $contract_type = $_POST['contract_type'];
+    $hiring_date = $_POST['hiring_date'];
     $password = $_POST['password'];
     
-    $sql="UPDATE users SET id=$id, firstname='$firstname', surname='$surname', username='$username', gender='$gender', role='$role', password='$password' WHERE id=$id";
+    $sql="UPDATE users SET id=$id, firstname='$firstname', surname='$surname', username='$username', gender='$gender', role='$role', contract_type='$contract_type', hiring_date='$hiring_date', password='$password' WHERE id=$id";
     
     $result=mysqli_query($connect, $sql);
     if($result) {
@@ -86,9 +90,24 @@ if(isset($_POST['update'])){
                         <div class="form-group">
                             <label for="role">Role</label>
                             <select class="form-control" id="role" name="role">
-                            <option>Employee</option>
+                            <option>employee</option>
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label for="contract_type">Contract type</label>
+                            <select class="form-control" id="contact_type" name="contract_type">
+                            <option>Employment contract</option>
+                            <option>Civil contract</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hiring_date">Hiring date</label>
+                            <input type="date" id="hiring_date" name="hiring_date" class="form-control my-2" value="2022-01-01" min="2018-01-01" max="2222-12-31">
+                        </div>
+
+
 
                         <div class="form-group">
                             <label>Password</label>
