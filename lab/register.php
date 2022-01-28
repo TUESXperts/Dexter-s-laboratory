@@ -10,7 +10,6 @@ if (isset($_POST['register'])) {
 	$sname = $_POST['sname'];
 	$uname = $_POST['uname'];
 	$gender = $_POST['gender'];
-	$role = $_POST['role'];
 	$pass = $_POST['pass'];
 	$c_pass = $_POST['c_pass'];
 
@@ -24,8 +23,6 @@ if (isset($_POST['register'])) {
 		$error['error'] = "username is empty";
 	}else if(empty($gender)){
 		$error['error'] = "Select Gender";
-	}else if(empty($role)){
-		$error['error'] = "Select role";
 	}else if(empty($pass)){
 		$error['error'] = "Enter Password";
 	}else if(empty($c_pass)){
@@ -44,7 +41,7 @@ if (isset($_POST['register'])) {
 
 	if (count($error) < 1) {
 		
-		$query = "INSERT INTO users(firstname,surname,username,gender, role, password) VALUES('$fname','$sname','$uname','$gender', '$role', '$pass')";
+		$query = "INSERT INTO users(firstname,surname,username,gender, role, password) VALUES('$fname','$sname','$uname','$gender', 'patient', '$pass')";
 		$res = mysqli_query($connect,$query);
 
 		if ($res) {
@@ -95,16 +92,7 @@ if (isset($_POST['register'])) {
 							<option value="">Select Gender</option>
 							<option value="Male">Male</option>
 							<option value="Female">Female</option>
-						</select>
-
-						<!-- ????????????????????????????????????
-						<label>Role</label>
-						<input name="role" class="form-control my-2" value="Patient" autocomplete="off">-->
-                         
-                        <label>Select Role</label>
-						<select name="role" class="form-control my-2">
-							<option value="">Selete Role</option>
-							<option value="Patient">Patient</option>
+                            <option value="Non-binary">Non-binary</option>
 						</select>
 
 						<label>Password</label>

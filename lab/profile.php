@@ -4,43 +4,41 @@ session_start();
 
 include("includes/connection.php");
 
-$id=$_SESSION['id'];
+$id=$_SESSION['user_id'];
 //$id=$_GET['updateid']
 
-$sql="SELECT * FROM users WHERE id=$id";
+$sql="SELECT * FROM users WHERE id=$id limit 1";
 $result=mysqli_query($connect, $sql);
 $row=mysqli_fetch_assoc($result);
 $id = $row['id'];
 $username = $row['username'];
 $password = $row['password'];
+$firstname = $row['firstname'];
+$surname = $row['surname'];
 
 if(isset($_POST['update'])){
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    extract($_POST);
+
     
     //$sql="UPDATE users SET id=$id, firstname='$firstname', surname='$surname', username='$username', gender='$gender', role='$role', contract_type='$contract_type', hiring_date='$hiring_date', password='$password' WHERE id=$id";
 
-    if($_SESSION['username'] == "admin") {
+    if($_SESSION['role'] == "admin") {
     	$sql="UPDATE users SET id=$id, username='$username', password='$password' WHERE id=$id";
-    	$result=mysqli_query($connect, $sql);
-    } else if ($_SESSION['username'] == "employee") {
+    } else if ($_SESSION['role'] == "employee") {
     	$sql="UPDATE users SET id=$id, firstname='$firstname', surname='$surname', gender='$gender', password='$password' WHERE id=$id";
-    	$result=mysqli_query($connect, $sql);
     } else {
     	$sql="UPDATE users SET id=$id, username='$username', gender='$gender', password='$password' WHERE id=$id";
-    	$result=mysqli_query($connect, $sql);
     }
 
+    $result=mysqli_query($connect, $sql);
 
     if($result) {
-	        header('location:admin.php');
-	    } else {
-	        die(mysqli_error($connect));
-	    }
-    
-    
-    
+        $_SESSION['username'] = $username;
+        header("Location: " . $_SESSION['role_redirect']);
+    } else {
+        die(mysqli_error($connect));
+    }
 }
 
 ?>
@@ -90,10 +88,11 @@ if(isset($_POST['update'])){
 
 	                        <div class="form-group">
 	                            <label for="gender">Gender</label>
-	                            <select class="form-control" id="gender" name="gender">
-	                            <option>Male</option>
-	                            <option>Female</option>
-	                            </select>
+                                <select class="form-control" id="gender" name="gender">
+                                    <option <?php echo ($row['gender'] == 'Male')?'selected':''; ?>>Male</option>
+                                    <option <?php echo ($row['gender'] == 'Female')?'selected':''; ?>>Female</option>
+                                    <option <?php echo ($row['gender'] == 'Non-binary')?'selected':''; ?>>Non-binary</option>
+                                </select>
                         	</div>
 
 						<?php } else { ?>
@@ -109,8 +108,9 @@ if(isset($_POST['update'])){
 							<div class="form-group">
 	                            <label for="gender">Gender</label>
 	                            <select class="form-control" id="gender" name="gender">
-	                            <option>Male</option>
-	                            <option>Female</option>
+	                                <option <?php echo ($row['gender'] == 'Male')?'selected':''; ?>>Male</option>
+	                                <option <?php echo ($row['gender'] == 'Female')?'selected':''; ?>>Female</option>
+                                    <option <?php echo ($row['gender'] == 'Non-binary')?'selected':''; ?>>Non-binary</option>
 	                            </select>
                         	</div>
 						<?php } ?>

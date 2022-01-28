@@ -26,16 +26,10 @@
               $_SESSION['user_id'] = $result['id'];
               $_SESSION['username'] = $result['username'];
               $_SESSION['role'] = $result['role'];
+              $_SESSION['role_redirect'] = $result['role'] . ".php";
 
-         	  if ($role == "patient") {
-         	  	header("Location: patient.php");
-         	  	
-         	  }else if($role == "employee"){
-                header("Location: employee.php");
+              header("Location: " . $_SESSION['role_redirect']);
 
-         	  }else if($role == "admin"){
-                header("Location: admin.php");
-            }
          	 $output .= "you have logged-In";
          }else{
              $output .= "Failed to login";

@@ -82,8 +82,9 @@ if(isset($_POST['update'])){
                         <div class="form-group">
                             <label for="gender">Gender</label>
                             <select class="form-control" id="gender" name="gender">
-                            <option>Male</option>
-                            <option>Female</option>
+                                <option <?php echo ($row['gender'] == 'Male')?'selected':''; ?>>Male</option>
+                                <option <?php echo ($row['gender'] == 'Female')?'selected':''; ?>>Female</option>
+                                <option <?php echo ($row['gender'] == 'Non-binary')?'selected':''; ?>>Non-binary</option>
                             </select>
                         </div>
 
