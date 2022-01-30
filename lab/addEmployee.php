@@ -8,13 +8,12 @@
     $surname = $_POST['surname'];
     $username = $_POST['username'];
     $gender = $_POST['gender'];
-    $role = $_POST['role'];
     $contract_type = $_POST['contract_type'];
     $hiring_date = $_POST['hiring_date'];
     $password = $_POST['password'];
     
     $sql = "INSERT INTO users (firstname, surname, username, gender, role, contract_type, hiring_date, password)
-            VALUES ('$firstname', '$surname', '$username', '$gender','$role', '$contract_type', '$hiring_date', '$password')";
+            VALUES ('$firstname', '$surname', '$username', '$gender','employee', '$contract_type', '$hiring_date', '$password')";
     
     $result=mysqli_query($connect, $sql);
     if($result) {
@@ -71,14 +70,6 @@
 			                <select class="form-control" id="gender" name="gender">
 			                <option>Male</option>
 			                <option>Female</option>
-			                </select>
-			            </div>
-
-
-			            <div class="form-group">
-			                <label for="role">Role</label>
-			                <select class="form-control" id="role" name="role">
-			                <option>employee</option>
 			                </select>
 			            </div>
 
