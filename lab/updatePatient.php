@@ -11,15 +11,13 @@ if(isset($_POST['update'])){
     $surname = $_POST['surname'];
     $username = $_POST['username'];
     $gender = $_POST['gender'];
-    $contract_type = $_POST['contract_type'];
-    $hiring_date = $_POST['hiring_date'];
     $password = $_POST['password'];
 
-    $sql="UPDATE users SET firstname='$firstname', surname='$surname', username='$username', gender='$gender', contract_type='$contract_type', hiring_date='$hiring_date', password='$password' WHERE id=$id";
+    $sql="UPDATE users SET firstname='$firstname', surname='$surname', username='$username', gender='$gender', password='$password' WHERE id=$id";
 
     $result=mysqli_query($connect, $sql);
     if($result) {
-        header('location: admin.php');
+        header('location: employee.php');
         return;
     } else {
         die(mysqli_error($connect));
@@ -43,7 +41,7 @@ if(isset($_POST['update'])){
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Update Employee</title>
+    <title>Update Patient</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <?php include("includes/header_links.php"); ?>
 </head>
@@ -56,7 +54,7 @@ if(isset($_POST['update'])){
                 <form method="post">    
                 <div class="container my-5">
                 <p style = "line-height:1.4">
-                        <button class="btn btn-dark"><a href="admin.php" class="text-light">Go back</a></button>
+                        <button class="btn btn-dark"><a href="employee.php" class="text-light">Go back</a></button>
                 </p>
                     
                         <div class="form-group">
@@ -85,21 +83,6 @@ if(isset($_POST['update'])){
                                 <option <?php echo ($row['gender'] == 'Non-binary')? 'selected':''; ?>>Non-binary</option>
                             </select>
                         </div>
-
-                        <div class="form-group">
-                            <label for="contract_type">Contract type</label>
-                            <select class="form-control" id="contact_type" name="contract_type">
-                            <option>Employment contract</option>
-                            <option>Civil contract</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="hiring_date">Hiring date</label>
-                            <input type="date" id="hiring_date" name="hiring_date" class="form-control my-2" value="<?=$row['hiring_date']?>" min="2018-01-01" max="2222-12-31">
-                        </div>
-
-
 
                         <div class="form-group">
                             <label>Password</label>

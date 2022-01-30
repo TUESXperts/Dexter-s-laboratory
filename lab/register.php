@@ -61,11 +61,12 @@ if (isset($_POST['register'])) {
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Multilogin System</title>
+	<title>Register</title>
+	<?php include("includes/header_links.php"); ?>
 </head>
 <body>
 
-	<?php include("includes/header.php"); ?>
+	<?php include("includes/header_navigation.php"); ?>
 
 
 	<div class="container">

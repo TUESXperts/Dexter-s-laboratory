@@ -20,7 +20,7 @@ include("includes/connection.php");
 </head>
 <body>
 
-<?php include("includes/header_navigation.php"); ?>
+    <?php include("includes/header_navigation.php"); ?>
 
 <div class="container" style="text-align:center">
     <button class="btn btn-info my-5" style="float:right;">
@@ -64,8 +64,8 @@ include("includes/connection.php");
                                     <td>
                                     <p style = "line-height:1.4">
                                         <button type="button" class="btn btn-primary"><a href="examinations.php?userid=' . $id . '" class="text-light">Examinations</a></button>
-                                        <button class="btn btn-success"><a href="updateEmployee.php?updateid=' .$id.'" class="text-light">Edit</a></button>
-                                        <button class="btn btn-danger"><a href="deleteEmployee.php?deleteid='.$id.'" class="text-light">Delete</a></button>
+                                        <button class="btn btn-success"><a href="updatePatient.php?updateid=' .$id.'" class="text-light">Edit</a></button>
+                                        <button class="btn btn-danger"><a href="deletePatient.php?deleteid='.$id.'" class="text-light">Delete</a></button>
                                     </p>
                                     </td>
                                 </tr>
