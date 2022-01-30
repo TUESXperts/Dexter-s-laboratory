@@ -2,6 +2,12 @@
 
 session_start();
 
+include("check_login.php");
+if($_SESSION['role'] != "admin") {
+    include("403_forbidden.php");
+    return;
+};
+
 include("includes/connection.php");
 
 $id = $_GET['updateid'];

@@ -7,7 +7,10 @@
     <ul class="navbar-nav">
         <?php if(isset($_SESSION['user_id'])){ ?>
             <li class="nav-item">
-                <a href="#" class="nav-link"><?php echo "Hello, " . $_SESSION['username'] . "!"; ?></a>
+                <a href="<?=$_SESSION['role_redirect']?>" class="nav-link"><?php echo "Hello, " . $_SESSION['username'] . "!"; ?></a>
+            </li>
+            <li class="nav-item">
+                <a href="about.php" class="nav-link">About us</a>
             </li>
             <li class="nav-item">
                 <a href="profile.php" class="nav-link">Profile</a>

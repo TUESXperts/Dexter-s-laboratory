@@ -44,7 +44,7 @@
 			       
 			            
 			            <div class="form-group">
-			                <label for="firstname">Servive</label>
+			                <label for="firstname">Service</label>
 			                <input type="text" class="form-control" id="service" name="service" autocomplete="off" placeholder="Enter service name...">
 			            </div>
 
