@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+  session_start();
   include("includes/connection.php");
 
    
@@ -47,11 +47,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Dexter's Lab</title>
-
+	<title>Login</title>
+    <?php include("includes/header_links.php"); ?>
 </head>
 <body>
-	<?php include("includes/header.php"); ?>
+<?php include("includes/header_navigation.php"); ?>
 
 	<div class="container">
 		<div class="col-md-12">

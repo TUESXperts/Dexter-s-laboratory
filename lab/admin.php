@@ -15,13 +15,12 @@ include("includes/connection.php");
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Dexter's Lab</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<title>Employees administration</title>
+    <?php include("includes/header_links.php"); ?>
 </head>
 <body>
 
-	<?php include("includes/header.php"); ?>
+    <?php include("includes/header_navigation.php"); ?>
 
 	<div class="container" style="text-align:center">
         <button class="btn btn-info my-5" style="float:right;">
@@ -70,7 +69,6 @@ include("includes/connection.php");
                                     <td>'.$hiring_date.'</td>
                                     <td>
                                     <p style = "line-height:1.4">
-                                        <button type="button" class="btn btn-primary"><a href="research.php?user_id='.$id.'" class="text-light">Research</a></button>
                                         <button class="btn btn-success"><a href="updateEmployee.php?updateid='.$id.'" class="text-light">Edit</a></button>
                                         <button class="btn btn-danger"><a href="deleteEmployee.php?deleteid='.$id.'" class="text-light">Delete</a></button>
                                     </p>

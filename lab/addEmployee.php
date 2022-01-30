@@ -31,11 +31,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Dexter's Lab</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<title>Add Employee</title>
+    <?php include("includes/header_links.php"); ?>
 </head>
 <body>
-	<?php include("includes/header.php"); ?>
+	<?php include("includes/header_navigation.php.php"); ?>
 	
 <div class="container">
 	<div class="col-md-12">
