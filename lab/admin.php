@@ -23,11 +23,22 @@ include("includes/connection.php");
     <?php include("includes/header_navigation.php"); ?>
 
 	<div class="container" style="text-align:center">
+        <button class="btn btn-info my-5" style="float:left;">
+            <a href="addService.php" class="text-light" >
+                Add Service
+            </a>
+        </button>
+        <button class="btn btn-info my-5 " style="float:left; margin:5px;">
+            <a href="showServices.php" class="text-light" >
+                Show Services
+            </a>
+        </button>
         <button class="btn btn-info my-5" style="float:right;">
             <a href="addEmployee.php" class="text-light" >
                 Register Employee
             </a>
         </button>
+
 
         <table class="table table-striped">
             <thead>
